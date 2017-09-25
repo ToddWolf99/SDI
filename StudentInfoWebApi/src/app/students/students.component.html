@@ -1,0 +1,84 @@
+<div class="panel panel-primary">
+ <div class="panel-heading">Student List</div>
+    <div class="panel-body">
+
+      <form class="form-horizontal" [formGroup]="studentForm" (ngSubmit)="submitForm(studentForm.value)">
+          <!-- <div class="form-group" [ngClass]="{'has-error':!studentForm.controls['email'].valid && studentForm.controls['email'].touched}">
+              <label>Email:</label>
+              <input class="form-control" type="text" placeholder="John@doe.com" [formControl]="studentForm.controls['email']">
+              <div *ngIf="studentForm.controls['email'].hasError('required') && studentForm.controls['email'].touched" class="alert alert-danger">You must add an email.</div>
+            </div> -->
+          <div class="form-group" [ngClass]="{'has-error':!studentForm.controls['firstName'].valid && studentForm.controls['firstName'].touched}">
+              <label class="control-label col-md-1" for="firstName">First name:</label>
+              <div class="col-md-6">
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" [formControl]="studentForm.controls['firstName']">
+                  <div *ngIf="studentForm.controls['firstName'].hasError('required') && studentForm.controls['firstName'].touched" class="alert alert-danger">You must add a first name.</div>
+                  <!-- <input type="text" class="form-control" id="caller" placeholder="Caller Name" name="caller" [(ngModel)] = "model.Caller"> -->
+              </div>
+            
+          </div>
+              <div class="form-group" [ngClass]="{'has-error':!studentForm.controls['lastName'].valid && studentForm.controls['lastName'].touched}">
+                  <label class="control-label col-md-1" for="lastName">Last Name:</label>
+                  <div class="col-md-6"> 
+                      <input type="text" class="form-control" id="lastName" placeholder="Student Last Name" name="lastName" [formControl]="studentForm.controls['lastName']">
+                      <div *ngIf="studentForm.controls['lastName'].hasError('required') && studentForm.controls['lastName'].touched" class="alert alert-danger">You must add a last name.</div>         
+                      <!-- <input type="text" class="form-control" id="title" placeholder="Title of Call Ticket" name="title" [(ngModel)] = "model.Title"> -->
+                  </div>
+              </div>
+              <div class="form-group" [ngClass]="{'has-error':!studentForm.controls['dob'].valid && studentForm.controls['dob'].touched}">
+                      <label class="control-label col-md-1" for="dob">Date of Birth:</label>
+                      <div class="col-md-6"> 
+                          <input type="text" class="form-control" id="dob" placeholder="Date of Birth" name="dob" [formControl]="studentForm.controls['dob']">      
+                          <div *ngIf="(studentForm.controls['dob'].hasError('pattern') || studentForm.controls['dob'].hasError('required'))  && studentForm.controls['dob'].touched" class="alert alert-danger">You must add a valid date in mm/dd/yyyy format.</div> 
+                        </div>
+              </div>
+              <div class="form-group" [ngClass]="{'has-error':!studentForm.controls['gpa'].valid && studentForm.controls['gpa'].touched}">
+                      <label class="control-label col-md-1" for="gpa">GPA:</label>
+                      <div class="col-md-6"> 
+                          <input type="text" class="form-control" id="gpa" placeholder="GPA" name="gpa" [formControl]="studentForm.controls['gpa']">
+                          <div *ngIf="(studentForm.controls['gpa'].hasError('pattern') || studentForm.controls['gpa'].hasError('required'))  && studentForm.controls['gpa'].touched" class="alert alert-danger">You must add a valid GPA between 0.0 and 4.0.</div>    
+                      </div>
+              </div>
+              <div class="form-group"> 
+                  <div class="col-md-4">&nbsp;</div>           
+                  <div class="col-md-3">
+                      <!-- <button type="submit" class="btn btn-default">Save</button> -->
+                      <button type="submit" class="btn btn-primary" [disabled]="!studentForm.valid">Submit</button>
+                      <!-- <button type="submit" class="btn btn-default" (click)="onSubmit('SaveandClose')" #saveAndClose id="saveAndClose">Save and Close</button> -->
+                      <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+                      <!-- <a href="#" (click)="onCancel()">Cancel</a> -->
+                  </div>
+              </div>
+      </form>
+      <br/>               
+      <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>DOB</th>
+              <th>GPA</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let student of students; let i = index">
+              
+              <td>{{student.Firstname}}</td>
+              <td>{{student.Lastname}}</td>
+              <td>{{student.DOB | date: 'shortDate' }}</td>
+              <td>{{student.GPA}}</td>
+          </tr>
+          </tbody>
+      </table>
+
+    </div>
+ 
+</div>
+
+
+                 
+       
+
+
+
+

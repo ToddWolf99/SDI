@@ -1,0 +1,55 @@
+<p>New Call</p>
+
+<form class="form-horizontal" #callForm="ngForm">
+    <div class="form-group">
+    <label class="control-label col-md-1" for="caller">Caller:</label>
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="caller" placeholder="Caller Name" name="caller" [(ngModel)] = "model.Caller">
+    </div>
+    <div class="col-md-1">  
+        <label>Status :</label>
+    </div>
+    <div class="col-md-2">
+        <select id="status" class="form-control" [(ngModel)] = "model.Status" name="status">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option> 
+            <option value="Waiting">Waiting</option>
+            <option value="Unknown">Unknown</option>
+        </select>
+    </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1" for="title">Title:</label>
+        <div class="col-md-10">          
+            <input type="text" class="form-control" id="title" placeholder="Title of Call Ticket" name="title" [(ngModel)] = "model.Title">
+        </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label col-md-1" for="problem">Problem:</label>
+            <div class="col-md-10"> 
+                    <textarea  class="form-control" id="problem" placeholder="Describe the problem"  name="problem" [(ngModel)] = "model.Problem">
+                    </textarea>         
+            </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label col-md-1" for="solution">Solution:</label>
+            <div class="col-md-10"> 
+                    <textarea  class="form-control" id="solution" placeholder="Describe the solution"  name="solution" [(ngModel)] = "model.Solution">
+                    </textarea>         
+            </div>
+    </div>
+    <div class="form-group"> 
+        <div class="col-md-8">&nbsp;</div>           
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-default" (click)="onSubmit('')">Save</button>
+            <button type="submit" class="btn btn-default" (click)="onSubmit('SaveandClose')" #saveAndClose id="saveAndClose">Save and Close</button>
+            <a href="#" (click)="onCancel()">Cancel</a>
+        </div>
+    </div>
+</form>
+
+                 
+       
+
+
+
